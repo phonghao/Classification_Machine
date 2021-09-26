@@ -14,11 +14,13 @@ int main()
     GaussianBlur(gray_img, blur_img, Size(5,5),0,0);
 
     adaptiveThreshold(blur_img, bin_img, 225, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY_INV, 9, 10);
+
     morphologyEx(bin_img,bin_img, MORPH_CLOSE, element);
     
     cout << "Percent: " << ((float) WHITE(bin_img))/((float) BLACK(bin_img))*100<<endl;
 
     bottom(resize_img, bin_img);
+
     imshow("Blur", blur_img);
     imshow("Binary", bin_img);
     imshow("Origin", resize_img);
