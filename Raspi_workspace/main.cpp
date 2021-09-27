@@ -7,7 +7,7 @@ int main()
 {
     origin_img = imread(PATH+"/2.jpg",1);
 
-    resize(origin_img, resize_img, Size(WIDTH(origin_img)*0.4, HEIGHT(origin_img)*0.4),0,0, INTER_LINEAR);
+    resize(origin_img, resize_img, Size(WIDTH(origin_img)*0.3, HEIGHT(origin_img)*0.3),0,0, INTER_LINEAR);
 
     cvtColor(resize_img,gray_img,COLOR_BGR2GRAY);
 
@@ -20,6 +20,7 @@ int main()
     cout << "Percent: " << ((float) WHITE(bin_img))/((float) BLACK(bin_img))*100<<endl;
 
     bottom(resize_img, bin_img);
+    cout << bottom(resize_img, bin_img) << endl;
 
     imshow("Blur", blur_img);
     imshow("Binary", bin_img);
@@ -47,12 +48,11 @@ int bottom(Mat src, Mat binary)
         }
         if (_count==0)
         {
-            *(&_position) = y-1 ;
+            _position = y-1 ;
             break;
         }
         _count = 0 ; 
     }
-    cout << "Y = " << *(&_position) <<endl;
-    line(src, Point(MID_WIDTH(src),*(&_position)), Point(WIDTH(src),*(&_position)), Scalar(0, 0, 255), 2, 8);
-    return *(&_position);
+    line(src, Point(MID_WIDTH(src),_position), Point(WIDTH(src),_position), Scalar(0, 0, 255), 2, 8);
+    return _position;
 }
