@@ -7,7 +7,7 @@ int main()
 {
     origin_img = imread(PATH+"/2.jpg",1);
 
-    resize(origin_img, resize_img, Size(WIDTH(origin_img)*0.3, HEIGHT(origin_img)*0.3),0,0, INTER_LINEAR);
+    resize(origin_img, resize_img, Size(WIDTH(origin_img)*0.25, HEIGHT(origin_img)*0.25),0,0, INTER_LINEAR);
 
     cvtColor(resize_img,gray_img,COLOR_BGR2GRAY);
 
@@ -16,21 +16,39 @@ int main()
     adaptiveThreshold(blur_img, bin_img, 225, ADAPTIVE_THRESH_MEAN_C, THRESH_BINARY_INV, 9, 10);
 
     morphologyEx(bin_img,bin_img, MORPH_CLOSE, element);
+
+    ptBottom = Bottom(resize_img, bin_img);
+    ptTop    = Top(resize_img, bin_img);
+    ptLeft   = Left(resize_img, bin_img);
+    ptRight  = Right(resize_img, bin_img);
+
+    Point TopLeft(ptLeft, ptTop);
+    Point BottomRight(ptRight, ptBottom);
+
+    bin_img(Rect(TopLeft, BottomRight)).copyTo(crop_img);
     
-    cout << "Percent: " << ((float) WHITE(bin_img))/((float) BLACK(bin_img))*100<<endl;
+    rectangle(resize_img,TopLeft,BottomRight,Scalar(0,0,255),1,8);
+  
+    percent = to_string(Percentage(crop_img)) + "%";
+    putText(resize_img, percent, Point(ptRight,ptTop-5), FONT_HERSHEY_DUPLEX, 0.8 ,Scalar(0,255,255), 2);
 
-    bottom(resize_img, bin_img);
-    cout << bottom(resize_img, bin_img) << endl;
+    namedWindow(Gray_windowName);
+    moveWindow(Gray_windowName,POS_SHOW_X,POS_SHOW_Y);
+    namedWindow(Color_windowName);
+    moveWindow(Color_windowName,POS_SHOW_X+WIDTH(resize_img),POS_SHOW_Y);
+    namedWindow(Binary_windowName);
+    moveWindow(Binary_windowName,POS_SHOW_X+WIDTH(resize_img)*2,POS_SHOW_Y);
 
-    imshow("Blur", blur_img);
-    imshow("Binary", bin_img);
-    imshow("Origin", resize_img);
+    imshow(Color_windowName, resize_img);
+    imshow(Gray_windowName, gray_img);
+    imshow(Binary_windowName, bin_img);
+
     waitKey(0);
 
     return 0;
 }
 
-int bottom(Mat src, Mat binary)
+int Bottom(Mat src, Mat binary)
 {
     int _position = 0;
     int _pixel;
@@ -48,11 +66,93 @@ int bottom(Mat src, Mat binary)
         }
         if (_count==0)
         {
-            _position = y-1 ;
+            _position = y ;
             break;
         }
         _count = 0 ; 
     }
-    line(src, Point(MID_WIDTH(src),_position), Point(WIDTH(src),_position), Scalar(0, 0, 255), 2, 8);
     return _position;
+}
+
+int Top(Mat src, Mat binary)
+{
+    int _position = 0;
+    int _pixel;
+    int _count = 0;
+
+    for (int y = MID_HEIGHT(src); y > 0; y--)
+    {
+        for (int x = MID_WIDTH(src); x < WIDTH(src); x++)
+        {
+            _pixel = (int)binary.at<uchar>(y,x);
+            if (_pixel != 0)
+            {
+                _count++;
+            }
+        }
+        if (_count==0)
+        {
+            _position = y ;
+            break;
+        }
+        _count = 0 ; 
+    }
+    return _position;
+}
+
+int Left(Mat src, Mat binary)
+{
+    int _position = 0;
+    int _pixel;
+    int _count = 0;
+
+    for (int x = MID_WIDTH(src); x < WIDTH(src); x++)
+    {
+        for (int y = MID_HEIGHT(src); y < HEIGHT(src); y++)
+        {
+            _pixel = (int)binary.at<uchar>(y,x);
+            if (_pixel != 0)
+            {
+                _count++;
+            }
+        }
+        if (_count==0)
+        {
+            _position = x ;
+            break;
+        }
+        _count = 0 ; 
+    }
+    return _position;
+}
+
+int Right(Mat src, Mat binary)
+{
+    int _position = 0;
+    int _pixel;
+    int _count = 0;
+
+    for (int x = MID_WIDTH(src); x > 0; x--)
+    {
+        for (int y = MID_HEIGHT(src); y < HEIGHT(src); y++)
+        {
+            _pixel = (int)binary.at<uchar>(y,x);
+            if (_pixel != 0)
+            {
+                _count++;
+            }
+        }
+        if (_count==0)
+        {
+            _position = x ;
+            break;
+        }
+        _count = 0 ; 
+    }
+    return _position;
+}
+
+float Percentage(Mat crop)
+{
+    return ((float) WHITE(crop))/((float) BLACK(crop))*100;
 }

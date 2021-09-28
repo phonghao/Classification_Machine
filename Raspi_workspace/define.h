@@ -19,18 +19,34 @@ using namespace std;
 
 #define POINT(X)            (*(&X))
 
+#define POS_SHOW_X          30
+#define POS_SHOW_Y          20
+
 String PATH= "G:/Classification_Machine/Picture";
-Mat origin_img, gray_img, blur_img, resize_img, bin_img, skel_img;
+String Color_windowName = "Result";
+String Gray_windowName = "Gray Image";
+String Binary_windowName = "Binary Image";
+Mat origin_img;
+Mat gray_img;
+Mat blur_img;
+Mat resize_img;
+Mat bin_img;
+Mat crop_img;
 Mat element = getStructuringElement(MORPH_ELLIPSE, Size(3, 3));
 
-int ptBot = 0;
+int mergeHeight = 0;
+int mergeWidth = 0;
+
+int ptBottom = 0;
 int ptTop = 0;
 int ptLeft = 0;
 int ptRight = 0;
 
-int bottom(Mat src, Mat binary);
-int top(Mat src, Mat binary);
-int left(Mat src, Mat binary);
-int right(Mat src, Mat binary);
+int Bottom(Mat src, Mat binary);
+int Top(Mat src, Mat binary);
+int Left(Mat src, Mat binary);
+int Right(Mat src, Mat binary);
+float Percentage(Mat crop);
+String percent;
 
 #endif
