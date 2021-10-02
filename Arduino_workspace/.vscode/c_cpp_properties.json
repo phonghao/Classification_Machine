@@ -10,13 +10,15 @@
             "includePath": [
                 "G:/Classification_Machine/Arduino_workspace/include",
                 "G:/Classification_Machine/Arduino_workspace/src",
+                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/FreeRTOS/src",
+                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal",
+                "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/mega",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 ""
             ],
             "browse": {
@@ -24,13 +26,15 @@
                 "path": [
                     "G:/Classification_Machine/Arduino_workspace/include",
                     "G:/Classification_Machine/Arduino_workspace/src",
+                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/FreeRTOS/src",
+                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal",
+                    "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/mega",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
-                    "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     ""
                 ]
             },
