@@ -39,3 +39,5 @@
 .vscode/ipch
 include/README
 lib/README
+
+*.pdsprj

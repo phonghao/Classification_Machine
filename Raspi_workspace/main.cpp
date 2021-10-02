@@ -5,7 +5,7 @@
 
 int main()
 {
-    origin_img = imread(PATH+"/1.jpg",1);
+    origin_img = imread(PATH+"/2.jpg",1);
 
     resize(origin_img, resize_img, Size(WIDTH(origin_img)*0.25, HEIGHT(origin_img)*0.25),0,0, INTER_LINEAR);
 
