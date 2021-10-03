@@ -46,7 +46,9 @@ int Bottom(Mat src, Mat binary);
 int Top(Mat src, Mat binary);
 int Left(Mat src, Mat binary);
 int Right(Mat src, Mat binary);
-float Percentage(Mat crop);
+
+float Percentage(int top, int bottom, int left, int right, Mat crop);
+
 String percent;
 
 #endif

@@ -3,7 +3,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <Servo.h>
 
-LiquidCrystal_I2C lcd(0x27,16,4);
+LiquidCrystal_I2C lcd(0x27,16,4);       
 Servo Servo_Left;
 Servo Servo_Right;
 

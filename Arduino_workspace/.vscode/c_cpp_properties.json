@@ -10,8 +10,9 @@
             "includePath": [
                 "G:/Classification_Machine/Arduino_workspace/include",
                 "G:/Classification_Machine/Arduino_workspace/src",
-                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/FreeRTOS/src",
-                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal",
+                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/Servo/src",
+                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/HX711/src",
+                "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal_I2C",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/mega",
@@ -26,8 +27,9 @@
                 "path": [
                     "G:/Classification_Machine/Arduino_workspace/include",
                     "G:/Classification_Machine/Arduino_workspace/src",
-                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/FreeRTOS/src",
-                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal",
+                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/Servo/src",
+                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/HX711/src",
+                    "G:/Classification_Machine/Arduino_workspace/.pio/libdeps/megaatmega2560/LiquidCrystal_I2C",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "C:/Users/Administrator/.platformio/packages/framework-arduino-avr/variants/mega",

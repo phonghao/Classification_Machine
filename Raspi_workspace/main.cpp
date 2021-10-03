@@ -28,8 +28,8 @@ int main()
     bin_img(Rect(TopLeft, BottomRight)).copyTo(crop_img);
     
     rectangle(resize_img,TopLeft,BottomRight,Scalar(0,0,255),1,8);
-  
-    percent = to_string(Percentage(crop_img)) + "%";
+
+    percent = to_string(Percentage(ptTop,ptBottom,ptLeft,ptRight,crop_img)).substr(0,5) + "%";
     putText(resize_img, percent, Point(ptRight,ptTop-5), FONT_HERSHEY_DUPLEX, 0.8 ,Scalar(0,255,255), 2);
 
     namedWindow(Gray_windowName);
@@ -152,7 +152,35 @@ int Right(Mat src, Mat binary)
     return _position;
 }
 
-float Percentage(Mat crop)
+// float Percentage(Mat crop)
+// {
+//     outsideBlack = Black_Outside(ptTop,ptBottom,ptLeft,ptRight,crop_img);
+//     return ((float) WHITE(crop))/((float) (BLACK(crop)-50000))*100;
+// }
+
+float Percentage(int top, int bottom, int left, int right, Mat crop)
 {
-    return ((float) WHITE(crop))/((float) (BLACK(crop)-50000))*100;
+    /* Reject black pixel inside bounder */
+    int _count = 0;
+    int _pixel = 0;
+    float _percent = 0;
+    for (int i = 0; i<= abs(bottom-top); i++)
+    {
+        for (int j = 0; j <= abs(right-left); j++)
+        {
+            _pixel = (int)crop.at<uchar>(i,j);
+            if (_pixel != 0)
+            {
+                break;
+            }
+            else
+            {   
+                _count++;
+            }
+        }
+    }
+
+    /* Calculate the percentage of vein */
+    _percent= ((float) WHITE(crop))*2.5/((float) (BLACK(crop)-(float)_count))*100;
+    return _percent;
 }
